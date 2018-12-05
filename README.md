@@ -1,6 +1,19 @@
 test-password-checker
 =====================
 
+## Pré-requis
+
+- php 7.2
+- composer
+- make
+
+## Installation
+
+- `composer install` pour installer les vendors
+- `make` pour lancer les tests
+
+## Objectif
+
 Votre objectif est de créer une API pour vérifier la validité des mots de passe.
 
 Les mots de passe doivent répondre à plusieurs critères (taille minimale, mélange de types, etc.) et nous voulons que chaque critère soit vérifié par une classe dédiée.

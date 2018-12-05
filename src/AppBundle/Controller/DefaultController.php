@@ -17,7 +17,7 @@ class DefaultController extends Controller
      */
     public function checkAction(Request $request, PasswordChecker $checker)
     {
-        $body = json_decode($request->getContent(), true);
+        $body = json_decode((string) $request->getContent(), true);
         if (JSON_ERROR_NONE !== json_last_error() || !is_array($body)) {
             return new JsonResponse([
                 'success' => false,
