@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace AppBundle\Service;
 
+use AppBundle\PasswordChecker\AnagramChecker;
+use AppBundle\PasswordChecker\AsciiChecker;
 use AppBundle\PasswordChecker\MinSizeChecker;
+use AppBundle\PasswordChecker\PasswordCheckerInterface;
 
 class PasswordChecker
 {
@@ -12,10 +15,14 @@ class PasswordChecker
      * @var MinSizeChecker
      */
     private $minSizeChecker;
+    private $asciiChecker;
+    private $anagramChecker;
 
-    public function __construct(MinSizeChecker $minSizeChecker)
+    public function __construct(MinSizeChecker $minSizeChecker, AsciiChecker $asciiChecker, AnagramChecker $anagramChecker)
     {
         $this->minSizeChecker = $minSizeChecker;
+        $this->asciiChecker = $asciiChecker;
+        $this->anagramChecker = $anagramChecker;
     }
 
     /**
@@ -30,7 +37,16 @@ class PasswordChecker
         if (false === $this->minSizeChecker->check($password)) {
             return $this->minSizeChecker->message();
         }
-
         return null;
+    }
+
+    public function AsciiChecker()
+    {
+        return $this->asciiChecker->AsciiChecker();
+    }
+
+    public function AnagramChecker()
+    {
+        return $this->anagramChecker->AnagramChecker();
     }
 }
